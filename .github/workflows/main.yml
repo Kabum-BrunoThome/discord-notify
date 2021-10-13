@@ -8,11 +8,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Discord Message Notify
-        uses: appleboy/discord-action@0.0.3
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
         with:
-          webhook_id: '896138492097208350'
-          webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-          username: ${{ github.pull_request.user.login }}
-          avatar_url: ${{ github.pull_request.user.avatar_url }}
-          message: ${{ github.pull_request.html_url }}
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: "Novo PR em ${{ github.repository }}"
+          description: 'Mais detalhes: ${{ github.event.pull_request.html_url }}'
+          color: 0x0000ff
+          username: ${{ github.actor }}
+          avatar_url: ${{ github.event.pull_request.user.avatar_url }}
+          nodetail: true
