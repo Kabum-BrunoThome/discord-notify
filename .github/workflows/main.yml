@@ -2,16 +2,21 @@ name: k5-pull-request-notify
 
 on:
   pull_request:
+    types: [opened]
     branches: [develop, master]
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: Bot Fofoqueiro
-        uses: Ilshidur/action-discord@master
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
         with:
-          args: "Criaram um novo PR"
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: "Novo PR em ${{ github.repository }}"
+          description: |
+                        `${{ github.event.pull_request.head.ref }}` ⟶ `${{ github.event.pull_request.base.ref  }}`
+                        Mais detalhes: ${{ github.event.pull_request.html_url }}
+          color: 0xff6500
+          username: ${{ github.actor }}
+          avatar_url: ${{ github.event.pull_request.user.avatar_url }}
+          nodetail: true
