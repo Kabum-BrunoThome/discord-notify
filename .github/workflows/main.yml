@@ -16,5 +16,5 @@ jobs:
           description: 'Mais detalhes: ${{ github.event_path }}'
           color: 0x0000ff
           username: ${{ github.actor }}
-          avatar_url: ${{ github.pull_request.user.avatar_url }}]
+          avatar_url: ${{ github.pull_request.user.avatar_url }}
           nodetail: true
