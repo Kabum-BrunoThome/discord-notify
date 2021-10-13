@@ -1,0 +1,17 @@
+name: k5-pull-request-notify
+
+on:
+  pull_request:
+    branches: [develop, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_USERNAME: Bot Fofoqueiro
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "Criaram um novo PR"
