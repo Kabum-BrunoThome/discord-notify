@@ -2,8 +2,8 @@ name: k5-pull-request-notify
 
 on:
   pull_request:
+    types: [opened]
     branches: [develop, master]
-
 jobs:
   build:
     runs-on: ubuntu-latest
