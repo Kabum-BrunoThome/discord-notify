@@ -12,8 +12,9 @@ jobs:
         if: always()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          title: "Novo PR"
-          description: "Build and deploy to GitHub Pages"
+          title: "Novo PR em ${{ github.repository }}"
+          description: 'Mais detalhes: ${{ github.event_path }}'
           color: 0x0000ff
-          username: GitHub Actions
-          avatar_url: ${{ github.pull_request.user.avatar_url }}
+          username: ${{ github.actor }}
+          avatar_url: ${{ github.pull_request.user.avatar_url }}]
+          nodetail: true
