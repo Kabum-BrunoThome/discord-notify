@@ -11,8 +11,8 @@ jobs:
       - name: Discord Message Notify
         uses: appleboy/discord-action@0.0.3
         with:
-          webhook_id: ${{ secrets.WEBHOOK_ID }}
+          webhook_id: '896138492097208350'
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
           username: ${{ github.pull_request.user.login }}
-          avatar: ${{ github.pull_request.user.avatar_url }}
+          avatar_url: ${{ github.pull_request.user.avatar_url }}
           message: ${{ github.pull_request.html_url }}
