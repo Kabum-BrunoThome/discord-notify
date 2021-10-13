@@ -15,7 +15,7 @@ jobs:
           title: "Novo PR em ${{ github.repository }}"
           description: |
                         `${{ github.event.pull_request.head.ref }}` ⟶ `${{ github.event.pull_request.base.ref  }}`
-                        'Mais detalhes: ${{ github.event.pull_request.html_url }}'
+                        Mais detalhes: ${{ github.event.pull_request.html_url }}
           color: 0xff6500
           username: ${{ github.actor }}
           avatar_url: ${{ github.event.pull_request.user.avatar_url }}
