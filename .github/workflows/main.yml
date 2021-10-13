@@ -13,8 +13,8 @@ jobs:
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           title: "Novo PR em ${{ github.repository }}"
-          description: 'Mais detalhes: ${{ github.event_path }}'
+          description: 'Mais detalhes: ${{ github.event.pull_request.html_url }}'
           color: 0x0000ff
           username: ${{ github.actor }}
-          avatar_url: ${{ github.pull_request.user.avatar_url }}
+          avatar_url: ${{ github.event.pull_request.user.avatar_url }}
           nodetail: true
