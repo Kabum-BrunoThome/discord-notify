@@ -8,11 +8,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Discord Message Notify
-        uses: appleboy/discord-action@0.0.3
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
         with:
-          webhook_id: ${{ secrets.WEBHOOK_ID }}
-          webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-          username: ${{ github.pull_request.user.login }}
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: "Novo PR"
+          description: "Build and deploy to GitHub Pages"
+          color: 0x0000ff
+          username: GitHub Actions
           avatar_url: ${{ github.pull_request.user.avatar_url }}
-          message: ${{ github.pull_request.html_url }}
