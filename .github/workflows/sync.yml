@@ -1,19 +1,19 @@
-name: k5-sync-branches
+name: Create sync pull request
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
 jobs:
-  build:
+  productionPromotion:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-      - name: Create Sync Pull Request
+          ref: master
+      - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          title: Sync master -> develop
-          body: Sincronizando commits de master para develop
           branch: master
           base: develop
+          title: sync master -> develop
